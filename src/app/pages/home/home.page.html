@@ -1,0 +1,358 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="header-toolbar">
+    <div class="toolbar-container">
+      <div class="header-content">
+        <ion-icon name="shield-checkmark" class="header-logo"></ion-icon>
+        <div class="header-text">
+          <h1 class="header-title">SafeWatch</h1>
+          <p class="header-subtitle">Security System</p>
+        </div>
+      </div>
+      
+      <div class="header-info">
+        <div class="status-indicator">
+          <div class="status-dot"></div>
+          <span>En línea</span>
+        </div>
+        
+        <ion-button 
+          (click)="actualizarDatos()" 
+          class="header-button"
+          [class.refreshing]="refreshing">
+          <ion-icon slot="icon-only" name="refresh-outline"></ion-icon>
+        </ion-button>
+      </div>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="home-container" [fullscreen]="true">
+  <!--fondo gradiente-->
+  <div class="background-wrapper">
+    <div class="background-pattern"></div>
+    <div class="background-overlay"></div>
+  </div>
+
+  <!--contenido-->
+  <div class="home-content" #homeContent>
+    <!--tarjeta-->
+    <div class="home-card">
+      <!--header principal-->
+      <div class="welcome-section">
+        <div class="user-info">
+          <div class="avatar-wrapper">
+            <img src="https://cdn-icons-png.flaticon.com/512/219/219969.png" alt="Avatar" class="user-avatar" />
+            <div class="online-indicator"></div>
+            <div class="status-badge">
+              <ion-icon name="checkmark-circle" class="status-icon"></ion-icon>
+            </div>
+          </div>
+          <div class="user-details">
+            <div class="welcome-header">
+              <ion-icon name="hand-left" class="welcome-hand"></ion-icon>
+              <h1 class="welcome-title">Hola, {{ user }}</h1>
+            </div>
+            <p class="welcome-subtitle">
+              <ion-icon name="business" class="subtitle-icon"></ion-icon>
+              Sistema de Seguridad Integral
+            </p>
+            <div class="time-display">
+              <ion-icon name="time-outline" class="time-icon"></ion-icon>
+              <span class="current-time">{{ horaActual }}</span>
+              <div class="date-display">
+                <ion-icon name="calendar-outline" class="date-icon"></ion-icon>
+                <span class="current-date">{{ fechaActual }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- metric -->
+      <div class="metrics-section">
+        <div class="section-header">
+          <h2 class="section-title">
+            <ion-icon name="stats-chart" class="section-icon"></ion-icon>
+            Métricas del Día
+          </h2>
+          <div class="metrics-info">
+            <ion-icon name="information-circle" class="info-icon"></ion-icon>
+          </div>
+        </div>
+        <div class="metrics-grid">
+          <div class="metric-card primary">
+            <div class="metric-decoration">
+              <div class="metric-dots"></div>
+            </div>
+            <div class="metric-icon">
+              <ion-icon name="footsteps"></ion-icon>
+            </div>
+            <div class="metric-content">
+              <span class="metric-value">{{ totalRondas }}</span>
+              <span class="metric-label">Rondas Realizadas</span>
+              <div class="metric-trend">
+                <ion-icon name="trending-up" class="trend-up"></ion-icon>
+                <span>+2 hoy</span>
+              </div>
+            </div>
+            <div class="metric-glow"></div>
+          </div>
+          
+          <div class="metric-card" [ngClass]="getIncidentClass()">
+            <div class="metric-decoration">
+              <div class="metric-dots"></div>
+            </div>
+            <div class="metric-icon">
+              <ion-icon name="warning"></ion-icon>
+            </div>
+            <div class="metric-content">
+              <span class="metric-value">{{ totalIncidentes }}</span>
+              <span class="metric-label">Incidentes Reportados</span>
+              <div class="metric-trend" [ngClass]="getIncidentTrendClass()">
+                <ion-icon [name]="getIncidentTrendIcon()" class="trend-icon"></ion-icon>
+                <span>{{ getIncidentTrendText() }}</span>
+              </div>
+            </div>
+            <div class="metric-glow"></div>
+          </div>
+
+          <div class="metric-card secondary">
+            <div class="metric-decoration">
+              <div class="metric-dots"></div>
+            </div>
+            <div class="metric-icon">
+              <ion-icon name="eye"></ion-icon>
+            </div>
+            <div class="metric-content">
+              <span class="metric-value">24/7</span>
+              <span class="metric-label">Vigilancia Activa</span>
+              <div class="metric-trend stable">
+                <ion-icon name="pulse" class="trend-stable"></ion-icon>
+                <span>En línea</span>
+              </div>
+            </div>
+            <div class="metric-glow"></div>
+          </div>
+
+          <div class="metric-card tertiary">
+            <div class="metric-decoration">
+              <div class="metric-dots"></div>
+            </div>
+            <div class="metric-icon">
+              <ion-icon name="checkmark-done-circle"></ion-icon>
+            </div>
+            <div class="metric-content">
+              <span class="metric-value">98%</span>
+              <span class="metric-label">Eficiencia</span>
+              <div class="metric-trend">
+                <ion-icon name="trending-up" class="trend-up"></ion-icon>
+                <span>+5%</span>
+              </div>
+            </div>
+            <div class="metric-glow"></div>
+          </div>
+        </div>
+      </div>
+      <!--Act principal -->
+      <div class="actions-section">
+        <div class="section-header">
+          <h2 class="section-title">
+            <ion-icon name="flash" class="section-icon"></ion-icon>
+            Acciones Rápidas
+          </h2>
+          <div class="actions-info">
+            <ion-icon name="help-circle" class="info-icon"></ion-icon>
+          </div>
+        </div>
+        <div class="actions-grid">
+          <div class="action-card" (click)="goToRondas()">
+            <div class="action-background primary-bg"></div>
+            <div class="action-decoration">
+              <div class="action-rings"></div>
+            </div>
+            <div class="action-content">
+              <div class="action-icon">
+                <ion-icon name="walk"></ion-icon>
+              </div>
+              <h3 class="action-title">Nueva Ronda</h3>
+              <p class="action-description">Registrar recorrido de seguridad</p>
+              <div class="action-features">
+                <div class="feature">
+                  <ion-icon name="time"></ion-icon>
+                  <span>5 min</span>
+                </div>
+                <div class="feature">
+                  <ion-icon name="navigate"></ion-icon>
+                  <span>GPS</span>
+                </div>
+              </div>
+              <div class="action-arrow">
+                <ion-icon name="chevron-forward"></ion-icon>
+              </div>
+            </div>
+          </div>
+
+          <div class="action-card" (click)="goToIncidentes()">
+            <div class="action-background accent-bg"></div>
+            <div class="action-decoration">
+              <div class="action-rings"></div>
+            </div>
+            <div class="action-content">
+              <div class="action-icon">
+                <ion-icon name="alert-circle"></ion-icon>
+              </div>
+              <h3 class="action-title">Reportar Incidente</h3>
+              <p class="action-description">Notificar anomalía o evento</p>
+              <div class="action-features">
+                <div class="feature">
+                  <ion-icon name="warning"></ion-icon>
+                  <span>Urgente</span>
+                </div>
+                <div class="feature">
+                  <ion-icon name="camera"></ion-icon>
+                  <span>Foto</span>
+                </div>
+              </div>
+              <div class="action-arrow">
+                <ion-icon name="chevron-forward"></ion-icon>
+              </div>
+            </div>
+          </div>
+
+          <div class="action-card" (click)="goToPerfil()">
+            <div class="action-background tertiary-bg"></div>
+            <div class="action-decoration">
+              <div class="action-rings"></div>
+            </div>
+            <div class="action-content">
+              <div class="action-icon">
+                <ion-icon name="person-circle"></ion-icon>
+              </div>
+              <h3 class="action-title">Mi Perfil</h3>
+              <p class="action-description">Información personal y estadísticas</p>
+              <div class="action-features">
+                <div class="feature">
+                  <ion-icon name="stats-chart"></ion-icon>
+                  <span>Stats</span>
+                </div>
+                <div class="feature">
+                  <ion-icon name="settings"></ion-icon>
+                  <span>Ajustes</span>
+                </div>
+              </div>
+              <div class="action-arrow">
+                <ion-icon name="chevron-forward"></ion-icon>
+              </div>
+            </div>
+          </div>
+
+          <div class="action-card" (click)="mostrarEmergencia()">
+            <div class="action-background danger-bg"></div>
+            <div class="action-decoration">
+              <div class="action-rings emergency-rings"></div>
+            </div>
+            <div class="action-content">
+              <div class="action-icon emergency-icon">
+                <ion-icon name="alert-triangle"></ion-icon>
+              </div>
+              <h3 class="action-title">Emergencia</h3>
+              <p class="action-description">Alerta inmediata al personal</p>
+              <div class="action-features">
+                <div class="feature emergency">
+                  <ion-icon name="flash"></ion-icon>
+                  <span>Rápido</span>
+                </div>
+                <div class="feature emergency">
+                  <ion-icon name="notifications"></ion-icon>
+                  <span>Alertas</span>
+                </div>
+              </div>
+              <div class="action-arrow emergency">
+                <ion-icon name="flash"></ion-icon>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!--Act.res-->
+      <div class="activity-section">
+        <div class="section-header">
+          <h2 class="section-title">
+            <ion-icon name="list" class="section-icon"></ion-icon>
+            Actividad Reciente
+          </h2>
+          <div class="activity-header-info">
+            <div class="activity-badge">{{ actividadReciente.length }}</div>
+            <ion-icon name="filter" class="filter-icon"></ion-icon>
+          </div>
+        </div>
+        
+        <div class="activity-list" *ngIf="actividadReciente.length > 0; else sinActividad">
+          <div class="activity-item" *ngFor="let actividad of actividadReciente; trackBy: trackByActividad" [ngClass]="actividad.tipo">
+            <div class="activity-indicator" [ngClass]="actividad.tipo"></div>
+            <div class="activity-content">
+              <div class="activity-main">
+                <div class="activity-header">
+                  <p class="activity-text">{{ actividad.descripcion }}</p>
+                  <div class="activity-priority" [ngClass]="getActivityPriority(actividad)">
+                    <ion-icon [name]="getPriorityIcon(actividad)"></ion-icon>
+                  </div>
+                </div>
+                <div class="activity-footer">
+                  <div class="activity-time">
+                    <ion-icon name="time"></ion-icon>
+                    <span>{{ actividad.tiempo }}</span>
+                  </div>
+                  <div class="activity-type" [ngClass]="actividad.tipo">
+                    <ion-icon [name]="getActivityTypeIcon(actividad.tipo)"></ion-icon>
+                    <span>{{ getActivityTypeText(actividad.tipo) }}</span>
+                  </div>
+                </div>
+              </div>
+              <div class="activity-icon" [ngClass]="actividad.tipo">
+                <ion-icon [name]="getActivityIcon(actividad.tipo)"></ion-icon>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <ng-template #sinActividad>
+          <div class="empty-state">
+            <div class="empty-icon">
+              <ion-icon name="time-outline"></ion-icon>
+            </div>
+            <h3 class="empty-title">Sin actividad reciente</h3>
+            <p class="empty-description">
+              <ion-icon name="rocket"></ion-icon>
+              Comienza registrando tu primera ronda
+            </p>
+            <button class="empty-action" (click)="goToRondas()">
+              <ion-icon name="add-circle"></ion-icon>
+              Crear primera actividad
+            </button>
+          </div>
+        </ng-template>
+      </div>
+
+      <!--footer inf -->
+      <div class="info-footer">
+        <div class="info-item">
+          <ion-icon name="shield-checkmark" class="info-footer-icon"></ion-icon>
+          <div class="info-content">
+            <span class="info-title">Sistema Activo</span>
+            <span class="info-subtitle">Todos los sistemas operativos</span>
+          </div>
+        </div>
+        <div class="info-item">
+          <ion-icon name="cloud-done" class="info-footer-icon"></ion-icon>
+          <div class="info-content">
+            <span class="info-title">Datos Sincronizados</span>
+            <span class="info-subtitle">Última sync: {{ horaActual }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>
+

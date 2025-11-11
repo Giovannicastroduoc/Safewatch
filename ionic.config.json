@@ -1,0 +1,7 @@
+{
+  "name": "SafeWatch",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}

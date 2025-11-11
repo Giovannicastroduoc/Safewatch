@@ -1,0 +1,431 @@
+.login-container {
+  --background: transparent;
+  position: relative;
+  overflow: hidden;
+}
+
+.background-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+}
+
+.background-pattern {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(67, 97, 238, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(114, 9, 183, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(76, 201, 240, 0.05) 0%, transparent 50%);
+  animation: float 6s ease-in-out infinite;
+}
+
+.background-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, 
+    rgba(67, 97, 238, 0.95) 0%, 
+    rgba(114, 9, 183, 0.85) 50%, 
+    rgba(76, 201, 240, 0.9) 100%);
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) scale(1); }
+  50% { transform: translateY(-10px) scale(1.02); }
+}
+
+/*header*/
+.header-toolbar {
+  --background: transparent;
+  --border-width: 0;
+  position: absolute;
+  top: 0;
+  z-index: 10;
+}
+
+.header-title {
+  color: white;
+  font-weight: 700;
+  font-size: 1.2em;
+  text-align: center;
+}
+
+/*catn princi*/
+.login-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100%;
+  padding: 20px;
+  padding-top: 80px;
+}
+
+.login-card {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  border-radius: 24px;
+  padding: 32px 28px;
+  width: 100%;
+  max-width: 420px;
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.1),
+    0 0 0 1px rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/*brand*/
+.brand-section {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.logo-wrapper {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 16px;
+}
+
+.logo-circle {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, var(--ion-color-primary) 0%, var(--ion-color-secondary) 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  color: white;
+  box-shadow: 0 8px 24px rgba(67, 97, 238, 0.3);
+  position: relative;
+  z-index: 2;
+}
+
+.logo-icon {
+  font-size: 36px;
+}
+
+.pulse-dot {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  width: 20px;
+  height: 20px;
+  background: var(--ion-color-success);
+  border-radius: 50%;
+  border: 3px solid white;
+  animation: pulse 2s infinite;
+  z-index: 3;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.1); opacity: 0.8; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.app-title {
+  margin: 0 0 8px 0;
+  color: var(--ion-color-primary);
+  font-size: 2em;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--ion-color-primary) 0%, var(--ion-color-secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.app-subtitle {
+  margin: 0 0 16px 0;
+  color: var(--ion-color-medium);
+  font-size: 0.95em;
+  font-weight: 500;
+}
+
+.welcome-message {
+  margin-top: 16px;
+}
+
+.welcome-message p {
+  margin: 0;
+  color: var(--ion-color-dark);
+  font-size: 1.1em;
+  font-weight: 600;
+}
+
+/*form*/
+.login-form {
+  margin-bottom: 24px;
+}
+
+.input-group {
+  margin-bottom: 20px;
+}
+
+.input-wrapper {
+  position: relative;
+}
+
+.input-icon {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 20px;
+  color: var(--ion-color-medium);
+  z-index: 2;
+  transition: all 0.3s ease;
+}
+
+.input-wrapper:focus-within .input-icon {
+  color: var(--ion-color-primary);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.custom-input-item {
+  --background: transparent;
+  --padding-start: 48px;
+  --padding-end: 16px;
+  --inner-padding-end: 0;
+  margin-bottom: 4px;
+}
+
+.custom-input {
+  --padding-top: 16px;
+  --padding-bottom: 16px;
+  --padding-start: 0;
+  font-size: 16px;
+  color: var(--ion-color-dark);
+}
+
+.custom-input.has-value {
+  color: var(--ion-color-primary);
+}
+
+.input-line {
+  position: absolute;
+  bottom: 0;
+  left: 48px;
+  right: 0;
+  height: 2px;
+  background: var(--ion-color-light);
+  transition: all 0.3s ease;
+}
+
+.input-line.active {
+  background: linear-gradient(90deg, var(--ion-color-primary) 0%, var(--ion-color-secondary) 100%);
+  transform: scaleX(1);
+}
+
+.input-line:not(.active) {
+  transform: scaleX(0.8);
+}
+
+/*msj error*/
+.error-message {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--ion-color-danger);
+  font-size: 0.85em;
+  margin-top: 6px;
+  padding-left: 48px;
+}
+
+.error-message ion-icon {
+  font-size: 16px;
+}
+
+/*recordar y olv contra*/
+.remember-forgot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 24px 0;
+}
+
+.remember-item {
+  --background: transparent;
+  --padding-start: 0;
+  --inner-padding-end: 0;
+}
+
+.remember-item ion-label {
+  font-size: 0.9em;
+  color: var(--ion-color-medium);
+}
+
+.forgot-link {
+  color: var(--ion-color-primary);
+  text-decoration: none;
+  font-size: 0.9em;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.forgot-link:hover {
+  color: var(--ion-color-secondary);
+}
+
+/*btn login*/
+.login-button {
+  --border-radius: 16px;
+  --padding-top: 20px;
+  --padding-bottom: 20px;
+  --background: linear-gradient(135deg, var(--ion-color-primary) 0%, var(--ion-color-secondary) 100%);
+  --background-activated: linear-gradient(135deg, var(--ion-color-primary) 0%, var(--ion-color-secondary) 100%);
+  --background-hover: linear-gradient(135deg, var(--ion-color-primary) 0%, var(--ion-color-secondary) 100%);
+  --box-shadow: 0 8px 24px rgba(67, 97, 238, 0.3);
+  position: relative;
+  overflow: hidden;
+  margin: 8px 0;
+  transition: all 0.3s ease;
+}
+
+.login-button:not(.loading):active {
+  transform: scale(0.98);
+  --box-shadow: 0 4px 16px rgba(67, 97, 238, 0.4);
+}
+
+.login-button.loading {
+  --background: var(--ion-color-medium);
+}
+
+.button-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  position: relative;
+  z-index: 2;
+}
+
+.button-icon {
+  font-size: 20px;
+}
+
+.button-text {
+  font-weight: 600;
+  font-size: 1em;
+}
+
+.button-shine {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(255, 255, 255, 0.3) 50%, 
+    transparent 100%);
+  transition: left 0.5s ease;
+}
+
+.login-button:not(.loading):hover .button-shine {
+  left: 100%;
+}
+
+/*inf ad*/
+.login-info {
+  display: flex;
+  justify-content: space-around;
+  margin: 24px 0;
+  padding: 16px 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8em;
+  color: var(--ion-color-medium);
+}
+
+.info-item ion-icon {
+  font-size: 16px;
+}
+
+/*footer*/
+.login-footer {
+  text-align: center;
+  padding-top: 16px;
+}
+
+.footer-text {
+  margin: 0 0 8px 0;
+  color: var(--ion-color-medium);
+  font-size: 0.9em;
+}
+
+.support-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--ion-color-primary);
+  text-decoration: none;
+  font-size: 0.9em;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.support-link:hover {
+  color: var(--ion-color-secondary);
+}
+
+/*est carga */
+ion-spinner {
+  --color: white;
+}
+
+
+@media (max-width: 480px) {
+  .login-card {
+    padding: 24px 20px;
+    margin: 0 8px;
+  }
+  
+  .app-title {
+    font-size: 1.8em;
+  }
+  
+  .remember-forgot {
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
+  }
+  
+  .login-info {
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
+  }
+}
+
+/*efec prof*/
+.login-card {
+  animation: cardEntrance 0.8s ease-out;
+}
+
+@keyframes cardEntrance {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}

@@ -1,0 +1,260 @@
+
+.rondas-content {
+  --background: #f5f7fa;
+  --padding-top: 16px;
+  --padding-bottom: 80px;
+}
+
+.form-container {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.form-card {
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  margin-bottom: 24px;
+  border: 1px solid #e1e5e9;
+}
+
+.form-card ion-card-header {
+  padding: 20px 20px 0;
+  background: linear-gradient(135deg, var(--ion-color-primary) 0%, var(--ion-color-secondary) 100%);
+  border-radius: 16px 16px 0 0;
+}
+
+.form-title {
+  color: white;
+  font-size: 1.4em;
+  font-weight: 700;
+  text-align: center;
+}
+
+.form-subtitle {
+  color: rgba(255, 255, 255, 0.9);
+  text-align: center;
+  font-size: 0.95em;
+}
+
+.form-item {
+  --padding-start: 0;
+  --inner-padding-end: 0;
+  --background: transparent;
+  margin-bottom: 16px;
+}
+
+.form-item ion-label {
+  font-weight: 600;
+  color: var(--ion-color-dark);
+  margin-bottom: 8px;
+}
+
+.form-item ion-select,
+.form-item ion-textarea,
+.form-item ion-input {
+  --padding-start: 16px;
+  --padding-end: 16px;
+  --padding-top: 12px;
+  --padding-bottom: 12px;
+  border-radius: 12px;
+  background: #f8f9fa;
+  border: 2px solid #e9ecef;
+  transition: all 0.3s ease;
+}
+
+.form-item ion-select:focus,
+.form-item ion-textarea:focus,
+.form-item ion-input:focus {
+  border-color: var(--ion-color-primary);
+  background: white;
+}
+
+.form-item.invalid ion-select,
+.form-item.invalid ion-textarea,
+.form-item.invalid ion-input {
+  border-color: var(--ion-color-danger);
+  background: #fff5f5;
+}
+
+.submit-button {
+  --border-radius: 12px;
+  --padding-top: 18px;
+  --padding-bottom: 18px;
+  --box-shadow: 0 4px 12px rgba(var(--ion-color-primary-rgb), 0.3);
+  margin-top: 24px;
+  font-weight: 600;
+  font-size: 1.1em;
+  height: 50px;
+  transition: all 0.3s ease;
+}
+
+.submit-button:disabled {
+  --box-shadow: none;
+  opacity: 0.6;
+}
+
+.submit-button:not(:disabled):active {
+  transform: translateY(2px);
+}
+
+.rondas-list {
+  margin-top: 32px;
+}
+
+.list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 0 8px;
+}
+
+.list-title {
+  color: var(--ion-color-dark);
+  font-size: 1.4em;
+  font-weight: 700;
+  margin: 0;
+}
+
+.counter-badge {
+  font-size: 0.9em;
+  font-weight: 600;
+  padding: 6px 12px;
+}
+
+.ronda-card {
+  margin-bottom: 16px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e1e5e9;
+  transition: all 0.3s ease;
+  background: white;
+}
+
+.ronda-card:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+.ronda-card ion-card-header {
+  padding: 16px;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  border-bottom: 1px solid #dee2e6;
+}
+
+.ronda-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.ronda-area {
+  font-size: 1.2em;
+  font-weight: 700;
+  color: var(--ion-color-dark);
+  flex: 1;
+  margin: 0;
+}
+
+.ronda-badge {
+  font-size: 0.75em;
+  font-weight: 700;
+  padding: 4px 8px;
+  border-radius: 6px;
+}
+
+.ronda-fecha, .ronda-ubicacion {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--ion-color-medium);
+  font-size: 0.85em;
+  margin-top: 4px;
+}
+
+.ronda-fecha ion-icon, .ronda-ubicacion ion-icon {
+  font-size: 1.1em;
+}
+
+.ronda-card ion-card-content {
+  padding: 16px;
+}
+
+.ronda-notas {
+  color: var(--ion-color-dark);
+  line-height: 1.6;
+  margin: 0;
+  white-space: pre-line;
+  font-size: 0.95em;
+}
+
+.location-button {
+  --border-radius: 8px;
+  --padding-start: 12px;
+  --padding-end: 12px;
+  height: 40px;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 80px 20px;
+  color: var(--ion-color-medium);
+}
+
+.empty-icon {
+  font-size: 80px;
+  margin-bottom: 20px;
+  opacity: 0.4;
+  color: var(--ion-color-primary);
+}
+
+.empty-state h3 {
+  margin: 0 0 12px 0;
+  color: var(--ion-color-dark);
+  font-size: 1.3em;
+  font-weight: 600;
+}
+
+.empty-state p {
+  margin: 0;
+  font-size: 1em;
+  line-height: 1.5;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.spin {
+  animation: spin 1s linear infinite;
+}
+
+ion-note[slot="error"] {
+  color: var(--ion-color-danger);
+  font-size: 0.85em;
+  margin-top: 4px;
+}
+
+@media (max-width: 480px) {
+  .form-container {
+    padding: 0 12px;
+  }
+  
+  .form-card ion-card-header {
+    padding: 16px 16px 0;
+  }
+  
+  .ronda-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  
+  .ronda-badge {
+    align-self: flex-start;
+  }
+}
+

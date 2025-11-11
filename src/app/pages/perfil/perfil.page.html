@@ -1,0 +1,153 @@
+<ion-header>
+  <ion-toolbar class="gradient-primary">
+    <ion-title>Mi Perfil</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home" class="custom-back-button"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="perfil-content">
+  <div class="form-container">
+
+    <ion-card class="form-card profile-card">
+      <ion-card-content>
+
+        <div class="profile-header">
+          <div class="avatar-section">
+            <div class="user-avatar">
+              {{ getIniciales() }}
+            </div>
+            <div class="online-indicator"></div>
+          </div>
+          
+          <div class="profile-info">
+            <h2 class="profile-name">{{ perfilData.nombre }}</h2>
+            <p class="profile-role">Guardia de Seguridad</p>
+            <ion-badge color="success" class="status-badge">
+              <ion-icon name="checkmark-circle"></ion-icon>
+              Activo
+            </ion-badge>
+          </div>
+        </div>
+
+        <div class="profile-details">
+          <ion-item class="detail-item" lines="none">
+            <ion-icon name="id-card" slot="start"></ion-icon>
+            <ion-label>
+              <h3>ID de Guardia</h3>
+              <p>{{ getGuardId() }}</p>
+            </ion-label>
+          </ion-item>
+
+          <ion-item class="detail-item" lines="none">
+            <ion-icon name="time" slot="start"></ion-icon>
+            <ion-label>
+              <h3>Turno Actual</h3>
+              <p>{{ perfilData.turno }}</p>
+            </ion-label>
+          </ion-item>
+
+          <ion-item class="detail-item" lines="none">
+            <ion-icon name="business" slot="start"></ion-icon>
+            <ion-label>
+              <h3>Zona Asignada</h3>
+              <p>{{ perfilData.zona }}</p>
+            </ion-label>
+          </ion-item>
+
+          <ion-item class="detail-item" lines="none">
+            <ion-icon name="call" slot="start"></ion-icon>
+            <ion-label>
+              <h3>Contacto</h3>
+              <p>{{ perfilData.telefono }}</p>
+            </ion-label>
+          </ion-item>
+
+          <ion-item class="detail-item" lines="none">
+            <ion-icon name="mail" slot="start"></ion-icon>
+            <ion-label>
+              <h3>Correo Electrónico</h3>
+              <p>{{ perfilData.email }}</p>
+            </ion-label>
+          </ion-item>
+        </div>
+      </ion-card-content>
+    </ion-card>
+
+
+    <ion-card class="form-card stats-card">
+      <ion-card-header>
+        <ion-card-title class="form-title">Estadísticas del Día</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <div class="stats-grid">
+          <div class="stat-item">
+            <div class="stat-value">{{ totalRondasHoy }}</div>
+            <div class="stat-label">Rondas</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-value">{{ totalIncidentesHoy }}</div>
+            <div class="stat-label">Incidentes</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-value">{{ horasServicio }}h</div>
+            <div class="stat-label">Servicio</div>
+          </div>
+        </div>
+
+ 
+        <div class="weekly-stats">
+          <div class="weekly-stats-title">Resumen Semanal</div>
+          <div class="weekly-stats-grid">
+            <div class="weekly-stat">
+              <div class="weekly-stat-value">{{ estadisticasSemanales.rondas }}</div>
+              <div class="weekly-stat-label">Rondas</div>
+            </div>
+            <div class="weekly-stat">
+              <div class="weekly-stat-value">{{ estadisticasSemanales.incidentes }}</div>
+              <div class="weekly-stat-label">Incidentes</div>
+            </div>
+            <div class="weekly-stat">
+              <div class="weekly-stat-value">{{ estadisticasSemanales.horasTrabajadas }}h</div>
+              <div class="weekly-stat-label">Horas</div>
+            </div>
+          </div>
+        </div>
+      </ion-card-content>
+    </ion-card>
+
+
+    <div class="profile-actions">
+      <ion-button 
+        expand="block" 
+        fill="outline" 
+        class="action-button"
+        (click)="editarPerfil()">
+        <ion-icon name="create" slot="start"></ion-icon>
+        Editar Información
+      </ion-button>
+
+      <ion-button 
+        expand="block" 
+        fill="outline" 
+        class="action-button"
+        (click)="configurarAlertas()">
+        <ion-icon name="notifications" slot="start"></ion-icon>
+        Configurar Alertas
+      </ion-button>
+
+      <ion-button 
+        expand="block" 
+        fill="outline" 
+        color="danger" 
+        class="action-button"
+        (click)="cerrarSesion()">
+        <ion-icon name="log-out" slot="start"></ion-icon>
+        Cerrar Sesión
+      </ion-button>
+    </div>
+  </div>
+</ion-content>
+
+  <!--<app-footer-nav></app-footer-nav> -->
